@@ -14,7 +14,7 @@ export default async function BlogLayout({ children }: { children: React.ReactNo
                     </div>
                 ))}
             </aside>
-            <main className="w-[1000px] flex-grow p-4 prose overflow-y-scroll">{children}</main>
+            <main className="w-[1000px] flex-grow p-4 overflow-y-auto">{children}</main>
         </div>
     );
 }

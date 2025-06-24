@@ -22,7 +22,7 @@ export default async function BlogPostPage(props: Params) {
     }
 
     return (
-        <article>
+        <article className="prose">
             <h1>{post.data.title}</h1>
             <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
 
