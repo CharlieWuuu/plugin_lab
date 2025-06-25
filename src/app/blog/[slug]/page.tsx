@@ -1,5 +1,5 @@
 import { getPostBySlug } from '@/lib/posts';
-import { notFound } from 'next/navigation';
+import 'highlight.js/styles/github-dark.css';
 
 type Params = {
     params: {
@@ -28,7 +28,7 @@ export default async function BlogPostPage(props: Params) {
 
             {Component && (
                 <>
-                    <p>示範區</p>
+                    <h2>示範區</h2>
                     <Component />
                 </>
             )}

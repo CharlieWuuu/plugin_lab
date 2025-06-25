@@ -7,6 +7,10 @@ import matter from 'gray-matter'; // 解析 Markdown 檔案裡的 frontmatter（
 import { remark } from 'remark'; // Markdown parser 套件（支援 plugin 架構）
 import html from 'remark-html'; // Remark 的 plugin，把 markdown 轉成 HTML
 
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeHighlight from 'rehype-highlight';
+
 // === 自訂模組 ===
 import { Markdown } from '../types/markdown'; // 自訂型別（自己定義的 `Markdown` interface）
 
@@ -27,7 +31,7 @@ export async function getPostBySlug(slug: string) {
 
     // 用 remark 處理 markdown 內容，加上 remark-html plugin，轉成 VFile
     // VFile 是 remark 處理後的結果，包含了 HTML 字串和其他元資料
-    const vFile = await remark().use(html).process(content);
+    const vFile = await remark().use(remarkRehype).use(rehypeHighlight).use(rehypeStringify).process(content);
 
     // 將轉換結果（VFile）轉成純 HTML 字串
     const contentHtml = vFile.toString();
